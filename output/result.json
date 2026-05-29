@@ -1,0 +1,185 @@
+{
+  "subject": "AI Agent Weekly",
+  "markdown": "# AI Agent Weekly\n*AI Agent Weekly · May 29, 2026*\n\nThis week in AI agents.\n\n## 1. Gemini's busy agentic day at Google I/O - The Rundown AI — *www.therundown.ai*\n\\Sponsored Listing\n\n### 📰 Everything else in AI today\n\nNew reporting revealed that Google Deepmind’s Demis Hassabis was an early angel investor in Anthropic, with Google also separately investing billions in the AI rival.\n\nAnthropic rolled \n[Read more](https://www.therundown.ai/p/gemini-busy-agentic-day-at-google-i-o)\n\n## 2. Shifting Budget Dynamics for Identity Security and AI Agents - Dark Reading — *www.darkreading.com*\nIdentity & Access Management Security\n Cyberattacks & Data Breaches\n Commentary\n\nEnterprise cybersecurity technology research that connects the dots.\n\n# AI Agents Are Shifting Identity Security Budget Dynamics\n\nAI agent projects are prolife\n[Read more](https://www.darkreading.com/identity-access-management-security/shifting-budget-dynamics-identity-security-ai-agents)\n\n## 3. OpenAI posts job to prepare for self-training AI - Let's Data Science — *letsdatascience.com*\n## Scoring Rationale\n\nThe story is a notable signal about industry attention to advanced safety concerns and hiring; it affects practitioners via talent markets and research priorities but does not by itself change technical capabilities.\n\n\n[Read more](https://letsdatascience.com/news/openai-posts-job-to-prepare-for-self-training-ai-8d180686)\n\n## 4. AI & Tech Brief: Exclusive | White House AI order expected - The Washington Post — *www.washingtonpost.com*\nExclusive: The White House’s highly-anticipated executive order is expected as soon as tomorrow. I lay out some new details of what to expect.\n Google unveiled a suite of new AI products at its annual Google I/O developer conference this we\n[Read more](https://www.washingtonpost.com/wp-intelligence/ai-tech-brief/2026/05/20/ai-tech-brief-googles-ai-operating-system/)\n\n## 5. AI Weekly: predictions on jobs, $1 trillion market values - Reuters — *www.reuters.com*\n### 01:06 Samsung shares jump as strike averted, but huge bonuses spur concern\n\n   ### 01:10 Nvidia bets on new data center chips as sales outlook tops estimates\n\n   ### 01:45 Elon Musk's SpaceX unveils plan for $1 trillion share sale\n\n   #\n[Read more](https://www.reuters.com/video/watch/idRW388927052026RP1/?chan=technology)\n\n## 6. Illinois representative talks bill that would regulate AI companies - NBC News — *www.nbcnews.com*\n00:34\n ## Jury tosses Elon Musk's lawsuit against OpenAI and Sam Altman\n\n  02:49\n ## Elon Musk's lawyer accuses OpenAI CEO of putting profit over people\n\n  04:17\n ## OpenAI co-founder and Microsoft CEO testify in Elon Musk v OpenAI trial\n\n \n[Read more](https://www.nbcnews.com/video/illinois-representative-talks-bill-that-would-regulate-ai-companies-264128069529)\n\n— The AI Agent Weekly Team",
+  "newsletter": {
+    "subject": "AI Agent Weekly",
+    "intro": "This week in AI agents.",
+    "items": [
+      {
+        "title": "Gemini's busy agentic day at Google I/O - The Rundown AI",
+        "summary": "\\Sponsored Listing\n\n### 📰 Everything else in AI today\n\nNew reporting revealed that Google Deepmind’s Demis Hassabis was an early angel investor in Anthropic, with Google also separately investing billions in the AI rival.\n\nAnthropic rolled ",
+        "url": "https://www.therundown.ai/p/gemini-busy-agentic-day-at-google-i-o",
+        "source": "www.therundown.ai"
+      },
+      {
+        "title": "Shifting Budget Dynamics for Identity Security and AI Agents - Dark Reading",
+        "summary": "Identity & Access Management Security\n Cyberattacks & Data Breaches\n Commentary\n\nEnterprise cybersecurity technology research that connects the dots.\n\n# AI Agents Are Shifting Identity Security Budget Dynamics\n\nAI agent projects are prolife",
+        "url": "https://www.darkreading.com/identity-access-management-security/shifting-budget-dynamics-identity-security-ai-agents",
+        "source": "www.darkreading.com"
+      },
+      {
+        "title": "OpenAI posts job to prepare for self-training AI - Let's Data Science",
+        "summary": "## Scoring Rationale\n\nThe story is a notable signal about industry attention to advanced safety concerns and hiring; it affects practitioners via talent markets and research priorities but does not by itself change technical capabilities.\n\n",
+        "url": "https://letsdatascience.com/news/openai-posts-job-to-prepare-for-self-training-ai-8d180686",
+        "source": "letsdatascience.com"
+      },
+      {
+        "title": "AI & Tech Brief: Exclusive | White House AI order expected - The Washington Post",
+        "summary": "Exclusive: The White House’s highly-anticipated executive order is expected as soon as tomorrow. I lay out some new details of what to expect.\n Google unveiled a suite of new AI products at its annual Google I/O developer conference this we",
+        "url": "https://www.washingtonpost.com/wp-intelligence/ai-tech-brief/2026/05/20/ai-tech-brief-googles-ai-operating-system/",
+        "source": "www.washingtonpost.com"
+      },
+      {
+        "title": "AI Weekly: predictions on jobs, $1 trillion market values - Reuters",
+        "summary": "### 01:06 Samsung shares jump as strike averted, but huge bonuses spur concern\n\n   ### 01:10 Nvidia bets on new data center chips as sales outlook tops estimates\n\n   ### 01:45 Elon Musk's SpaceX unveils plan for $1 trillion share sale\n\n   #",
+        "url": "https://www.reuters.com/video/watch/idRW388927052026RP1/?chan=technology",
+        "source": "www.reuters.com"
+      },
+      {
+        "title": "Illinois representative talks bill that would regulate AI companies - NBC News",
+        "summary": "00:34\n ## Jury tosses Elon Musk's lawsuit against OpenAI and Sam Altman\n\n  02:49\n ## Elon Musk's lawyer accuses OpenAI CEO of putting profit over people\n\n  04:17\n ## OpenAI co-founder and Microsoft CEO testify in Elon Musk v OpenAI trial\n\n ",
+        "url": "https://www.nbcnews.com/video/illinois-representative-talks-bill-that-would-regulate-ai-companies-264128069529",
+        "source": "www.nbcnews.com"
+      }
+    ],
+    "sign_off": "— The AI Agent Weekly Team"
+  },
+  "plan": {
+    "queries": [
+      "latest AI agent news this week"
+    ],
+    "audience": "AI practitioners",
+    "tone": "informative",
+    "num_stories": 6
+  },
+  "critique": {
+    "score": 8,
+    "issues": [
+      "critique failed: Error code: 400 - {'code': 'Client specified an invalid argument', 'error': 'Incorrect API key provided: gs***2v. You can obtain an API key from https://console.x.ai.'}"
+    ],
+    "suggestions": [],
+    "needs_revision": false
+  },
+  "events": [
+    {
+      "stage": "plan",
+      "title": "Planning",
+      "detail": "Interpreting goal: “Create a weekly newsletter on latest AI agent news and send it to our subscribers.”",
+      "data": {},
+      "ts": "19:03:38"
+    },
+    {
+      "stage": "plan",
+      "title": "Planning fallback",
+      "detail": "LLM planning failed (Error code: 400 - {'code': 'Client specified an invalid argument', 'error': 'Incorrect API key provided: gs***2v. You can obtain an API key from https://console.x.ai.'}); using defaults.",
+      "data": {},
+      "ts": "19:03:38"
+    },
+    {
+      "stage": "plan",
+      "title": "Plan ready",
+      "detail": "6 stories • audience: AI practitioners • queries: latest AI agent news this week",
+      "data": {
+        "queries": [
+          "latest AI agent news this week"
+        ],
+        "audience": "AI practitioners",
+        "tone": "informative",
+        "num_stories": 6
+      },
+      "ts": "19:03:38"
+    },
+    {
+      "stage": "research",
+      "title": "Researching",
+      "detail": "Searching the web / feeds for 1 queries…",
+      "data": {},
+      "ts": "19:03:38"
+    },
+    {
+      "stage": "research",
+      "title": "Research complete",
+      "detail": "Found 6 candidate articles.",
+      "data": {
+        "count": 6,
+        "titles": [
+          "Gemini's busy agentic day at Google I/O - The Rundown AI",
+          "Shifting Budget Dynamics for Identity Security and AI Agents - Dark Reading",
+          "OpenAI posts job to prepare for self-training AI - Let's Data Science",
+          "AI & Tech Brief: Exclusive | White House AI order expected - The Washington Post",
+          "AI Weekly: predictions on jobs, $1 trillion market values - Reuters",
+          "Illinois representative talks bill that would regulate AI companies - NBC News"
+        ]
+      },
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "write",
+      "title": "Writing",
+      "detail": "Selecting & summarizing the top 6 stories…",
+      "data": {},
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "write",
+      "title": "Writing fallback",
+      "detail": "LLM writing failed (Error code: 400 - {'code': 'Client specified an invalid argument', 'error': 'Incorrect API key provided: gs***2v. You can obtain an API key from https://console.x.ai.'}); using extractive summaries.",
+      "data": {},
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "write",
+      "title": "Draft ready",
+      "detail": "Drafted “AI Agent Weekly” with 6 stories.",
+      "data": {
+        "subject": "AI Agent Weekly",
+        "items": [
+          "Gemini's busy agentic day at Google I/O - The Rundown AI",
+          "Shifting Budget Dynamics for Identity Security and AI Agents - Dark Reading",
+          "OpenAI posts job to prepare for self-training AI - Let's Data Science",
+          "AI & Tech Brief: Exclusive | White House AI order expected - The Washington Post",
+          "AI Weekly: predictions on jobs, $1 trillion market values - Reuters",
+          "Illinois representative talks bill that would regulate AI companies - NBC News"
+        ]
+      },
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "reflect",
+      "title": "Self-reflection",
+      "detail": "Critiquing the draft for quality & relevance…",
+      "data": {},
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "reflect",
+      "title": "Self-critique: 8/10",
+      "detail": "critique failed: Error code: 400 - {'code': 'Client specified an invalid argument', 'error': 'Incorrect API key provided: gs***2v. You can obtain an API key from https://console.x.ai.'}",
+      "data": {
+        "score": 8,
+        "issues": [
+          "critique failed: Error code: 400 - {'code': 'Client specified an invalid argument', 'error': 'Incorrect API key provided: gs***2v. You can obtain an API key from https://console.x.ai.'}"
+        ],
+        "suggestions": [],
+        "needs_revision": false
+      },
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "output",
+      "title": "Generating newsletter",
+      "detail": "Rendering HTML + Markdown deliverables…",
+      "data": {},
+      "ts": "19:03:41"
+    },
+    {
+      "stage": "output",
+      "title": "Newsletter ready",
+      "detail": "Deliverables generated.",
+      "data": {
+        "subject": "AI Agent Weekly"
+      },
+      "ts": "19:03:41"
+    }
+  ]
+}
