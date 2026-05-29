@@ -73,7 +73,7 @@ newsletter_agent/
    XAI_API_KEY=your_grok_api_key        # REQUIRED — get one at https://console.x.ai
    GROK_MODEL=grok-3                    # e.g. grok-3, grok-3-mini, grok-4
    TAVILY_API_KEY=                      # OPTIONAL — live web search; falls back to RSS if blank
-   FLASK_PORT=5000
+   FLASK_PORT=8080
    ```
 
    > **No Grok key?** The agent still runs in a clearly-labelled **offline mode** (extractive
