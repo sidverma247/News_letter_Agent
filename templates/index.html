@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter Agent</title>
+<style>
+  :root{
+    --indigo:#4f46e5; --violet:#7c3aed; --bg:#0f1117; --card:#171a23;
+    --line:#262b38; --txt:#e6e8ee; --muted:#8b93a7; --good:#22c55e; --warn:#f59e0b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--txt);display:flex;flex-direction:column;}
+
+  /* ── Header ── */
+  header{
+    flex-shrink:0;padding:14px 24px;
+    background:linear-gradient(135deg,var(--indigo),var(--violet));
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  header h1{font-size:18px;white-space:nowrap}
+  header p{color:#e0e7ff;font-size:12px;white-space:nowrap}
+
+  /* ── Main split ── */
+  .layout{flex:1;display:flex;overflow:hidden;gap:0}
+
+  /* ── Sidebar ── */
+  .sidebar{
+    width:320px;min-width:280px;max-width:360px;
+    display:flex;flex-direction:column;gap:0;
+    border-right:1px solid var(--line);overflow:hidden;
+    flex-shrink:0;
+  }
+  .sidebar-top{padding:16px;border-bottom:1px solid var(--line);flex-shrink:0}
+  .sidebar-log{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:0}
+  .sidebar-log label{font-size:11px;color:var(--muted);margin-bottom:8px;display:block;text-transform:uppercase;letter-spacing:.05em}
+
+  /* ── Controls ── */
+  .pills{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+  .pill{display:inline-block;font-size:11px;padding:3px 8px;border-radius:20px}
+  .pill.on{background:rgba(34,197,94,.18);color:var(--good)}
+  .pill.off{background:rgba(245,158,11,.18);color:var(--warn)}
+
+  label.lbl{display:block;font-size:12px;color:var(--muted);margin:0 0 5px}
+  textarea{
+    width:100%;min-height:72px;background:#0c0e14;color:var(--txt);
+    border:1px solid var(--line);border-radius:8px;padding:9px;font-size:13px;resize:vertical;
+  }
+  .modes{display:flex;gap:6px;margin:10px 0}
+  .mode{
+    flex:1;border:1px solid var(--line);border-radius:8px;padding:10px 8px;cursor:pointer;
+    text-align:center;font-size:13px;background:#0c0e14;transition:.15s;
+  }
+  .mode small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+  .mode.active{border-color:var(--indigo);background:rgba(79,70,229,.15)}
+  .run-btn{
+    background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;border:0;
+    border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;cursor:pointer;width:100%;
+    transition:.15s;
+  }
+  .run-btn:disabled{opacity:.45;cursor:not-allowed}
+  .run-btn:not(:disabled):hover{filter:brightness(1.1)}
+
+  /* ── Log events ── */
+  .log{display:flex;flex-direction:column;gap:5px}
+  .ev{padding:7px 9px;border-left:2px solid var(--line);background:#0c0e14;border-radius:5px}
+  .ev .t{font-weight:600;font-size:12px} .ev .d{color:var(--muted);font-size:11px;margin-top:2px}
+  .ev.plan{border-color:#60a5fa}.ev.research{border-color:#34d399}.ev.write{border-color:#f472b6}
+  .ev.reflect{border-color:#fbbf24}.ev.revise{border-color:#f87171}.ev.output{border-color:#a78bfa}
+  .ev.done{border-color:var(--good)} .ev.review_request{border-color:#fb923c;background:rgba(251,146,60,.1)}
+
+  /* ── Review panel ── */
+  .review{border:1px solid var(--warn);background:rgba(245,158,11,.08);border-radius:8px;padding:12px;margin-top:10px}
+  .review h3{font-size:13px;margin-bottom:8px}
+  .review input{width:100%;background:#0c0e14;color:var(--txt);border:1px solid var(--line);
+                border-radius:6px;padding:7px;font-size:12px;margin:6px 0}
+  .review .row{display:flex;gap:6px}
+  .review .row button{flex:1;padding:7px;font-size:12px;border-radius:6px;cursor:pointer;border:0;font-weight:600}
+  .review .row button:first-child{background:var(--indigo);color:#fff}
+  .review .row button.ghost{background:#0c0e14;color:var(--txt);border:1px solid var(--line)}
+
+  /* ── Output panel ── */
+  .output-panel{
+    flex:1;display:flex;flex-direction:column;overflow:hidden;
+    background:var(--bg);
+  }
+  .output-header{
+    flex-shrink:0;padding:12px 20px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:10px;
+  }
+  .tabs{display:flex;gap:4px}
+  .tab{padding:5px 11px;border-radius:6px;font-size:12px;cursor:pointer;background:#0c0e14;border:1px solid var(--line);color:var(--txt)}
+  .tab.active{background:var(--indigo);border-color:var(--indigo)}
+  .dl-links{margin-left:auto;display:flex;gap:12px;align-items:center}
+  a.dl{color:#a5b4fc;font-size:12px;text-decoration:none}
+  a.dl:hover{color:#fff}
+
+  /* ── Output content fills the rest ── */
+  .output-body{flex:1;overflow:hidden;position:relative}
+  .output-body iframe{
+    position:absolute;inset:0;width:100%;height:100%;
+    border:0;background:#fff;
+  }
+  .output-body pre{
+    position:absolute;inset:0;overflow:auto;
+    white-space:pre-wrap;font-size:13px;line-height:1.6;
+    background:#0c0e14;padding:20px;color:var(--txt);
+    font-family:'Fira Code',Menlo,Consolas,monospace;
+  }
+  .output-body .empty{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:10px;color:var(--muted);
+  }
+  .output-body .empty svg{opacity:.25}
+
+  @media(max-width:720px){
+    .layout{flex-direction:column}
+    .sidebar{width:100%;max-width:100%;border-right:0;border-bottom:1px solid var(--line);max-height:50vh}
+    html,body{overflow:auto}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🤖 Autonomous Newsletter Agent</h1>
+    <p>LangGraph · Grok (xAI) · plan → research → write → self-reflect → revise → output</p>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="pills">
+        <span class="pill {{ 'on' if grok_ready else 'off' }}">Grok {{ 'connected' if grok_ready else 'no key (offline mode)' }}</span>
+        <span class="pill {{ 'on' if tavily_ready else 'off' }}">{{ 'Tavily search' if tavily_ready else 'RSS fallback' }}</span>
+      </div>
+
+      <label class="lbl">Goal (plain English)</label>
+      <textarea id="goal">Create a weekly newsletter on latest AI agent news and send it to our subscribers.</textarea>
+
+      <div class="modes">
+        <div class="mode active" data-mode="autonomous" onclick="pickMode(this)">
+          Fully Autonomous<small>Runs end-to-end, no input</small>
+        </div>
+        <div class="mode" data-mode="human_in_loop" onclick="pickMode(this)">
+          Human-in-the-Loop<small>Approve plan &amp; draft</small>
+        </div>
+      </div>
+
+      <button class="run-btn" id="runBtn" onclick="runAgent()">Run agent ▶</button>
+    </div>
+
+    <div class="sidebar-log">
+      <label>Agent activity</label>
+      <div id="log" class="log"></div>
+      <div id="reviewSlot"></div>
+    </div>
+  </aside>
+
+  <!-- ── Full-screen output ── -->
+  <section class="output-panel">
+    <div class="output-header">
+      <div class="tabs">
+        <div class="tab active" data-tab="preview" onclick="pickTab(this)">HTML preview</div>
+        <div class="tab" data-tab="markdown" onclick="pickTab(this)">Markdown</div>
+        <div class="tab" data-tab="meta" onclick="pickTab(this)">Plan &amp; critique</div>
+      </div>
+      <div id="dl" class="dl-links" style="display:none">
+        <a class="dl" href="/download/html" target="_blank">⬇ download .html</a>
+        <a class="dl" href="/download/md" target="_blank">⬇ download .md</a>
+      </div>
+    </div>
+
+    <div class="output-body" id="paneOut">
+      <div class="empty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 4h16v16H4z" rx="2"/><path d="M8 9h8M8 13h5"/>
+        </svg>
+        <span>The generated newsletter will appear here.</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+let MODE = "autonomous", JOB = null, RESULT = null, TAB = "preview";
+
+function pickMode(el){
+  document.querySelectorAll('.mode').forEach(m=>m.classList.remove('active'));
+  el.classList.add('active'); MODE = el.dataset.mode;
+}
+function pickTab(el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active'); TAB = el.dataset.tab; renderOut();
+}
+function addEv(e){
+  const log = document.getElementById('log');
+  const div = document.createElement('div');
+  div.className = 'ev ' + (e.stage||'');
+  div.innerHTML = `<div class="t">${e.title||''}</div>` + (e.detail?`<div class="d">${e.detail}</div>`:'');
+  log.appendChild(div); log.scrollTop = log.scrollHeight;
+}
+
+async function runAgent(){
+  document.getElementById('log').innerHTML = '';
+  document.getElementById('reviewSlot').innerHTML = '';
+  document.getElementById('paneOut').innerHTML = '<div class="empty"><span style="color:#8b93a7">Working…</span></div>';
+  document.getElementById('dl').style.display = 'none';
+  document.getElementById('runBtn').disabled = true;
+  RESULT = null;
+
+  const r = await fetch('/run', {method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({goal: document.getElementById('goal').value, mode: MODE})});
+  const j = await r.json(); JOB = j.job_id;
+
+  const es = new EventSource('/stream/' + JOB);
+  es.onmessage = (m)=>{
+    const e = JSON.parse(m.data);
+    if(e.stage === 'review_request'){ showReview(e.data); return; }
+    if(e.stage === 'result'){ RESULT = e.data; renderOut();
+        document.getElementById('dl').style.display='flex';
+        document.getElementById('runBtn').disabled=false; es.close(); return; }
+    if(e.stage === 'done'){ addEv(e); return; }
+    if(e.stage === 'error'){ addEv(e); document.getElementById('runBtn').disabled=false; es.close(); return; }
+    addEv(e);
+  };
+  es.onerror = ()=>{ document.getElementById('runBtn').disabled=false; es.close(); };
+}
+
+function showReview(d){
+  const stage = d.review_stage, p = d.payload;
+  let body = '';
+  if(stage === 'plan'){
+    body = `<p style="font-size:12px;color:#8b93a7;margin-bottom:8px">Proposed plan: ${p.plan.num_stories} stories ·
+            ${(p.plan.queries||[]).join(', ')}</p>
+            <div class="row"><button onclick="sendReview('plan',{})">Approve plan</button></div>`;
+  } else {
+    const items = (p.newsletter.items||[]).map((it,i)=>`${i+1}. ${it.title}`).join('<br>');
+    body = `<p style="font-size:12px"><b>${p.newsletter.subject}</b></p>
+            <p style="font-size:11px;color:#8b93a7;margin:4px 0">${items}</p>
+            <p style="font-size:11px;margin:4px 0">Self-critique: ${p.critique.score}/10</p>
+            <input id="fb" placeholder="Optional feedback (leave blank to approve)">
+            <div class="row">
+              <button onclick="sendReview('draft', {action:'approve'})">Approve</button>
+              <button class="ghost" onclick="sendReview('draft', {action:'revise', feedback: document.getElementById('fb').value})">Revise</button>
+            </div>`;
+  }
+  document.getElementById('reviewSlot').innerHTML =
+    `<div class="review"><h3>🙋 Review needed: ${stage}</h3>${body}</div>`;
+}
+
+async function sendReview(stage, decision){
+  document.getElementById('reviewSlot').innerHTML =
+    '<p style="color:#8b93a7;font-size:12px;margin-top:8px">Sent — agent continuing…</p>';
+  await fetch('/review/' + JOB, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({stage, decision})});
+}
+
+function renderOut(){
+  const pane = document.getElementById('paneOut');
+  if(!RESULT){ return; }
+  if(TAB === 'preview'){
+    pane.innerHTML = '<iframe id="frame"></iframe>';
+    document.getElementById('frame').srcdoc = RESULT.html;
+  } else if(TAB === 'markdown'){
+    pane.innerHTML = '<pre></pre>'; pane.querySelector('pre').textContent = RESULT.markdown;
+  } else {
+    pane.innerHTML = '<pre></pre>';
+    pane.querySelector('pre').textContent =
+      'PLAN\n' + JSON.stringify(RESULT.plan, null, 2) +
+      '\n\nSELF-CRITIQUE\n' + JSON.stringify(RESULT.critique, null, 2);
+  }
+}
+</script>
+</body>
+</html>
