@@ -113,6 +113,14 @@ python run_cli.py --goal "Create a weekly newsletter on latest AI agent news"
 # Human-in-the-loop (approve plan & draft in the terminal)
 python run_cli.py --mode human_in_loop
 ```
+### Output
+<img width="1470" height="880" alt="Screenshot 2026-05-29 at 7 03 36 PM" src="https://github.com/user-attachments/assets/5fb64a1c-6280-420f-8651-bda608d19932" />
+
+<img width="1470" height="880" alt="Screenshot 2026-05-29 at 7 03 47 PM" src="https://github.com/user-attachments/assets/fab5aeca-1ada-4344-862a-c98ca4b5e7b2" />
+
+
+
+
 
 ### As a library — the single autonomous call
 
