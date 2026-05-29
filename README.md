@@ -87,6 +87,12 @@ newsletter_agent/
 
 ## Run it
 
+### Live Hosted Link
+
+```
+# open https://news-letter-agent.onrender.com/
+```
+
 ### Web UI (recommended)
 
 ```bash
